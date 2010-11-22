@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project name="DreamOnRails" basedir="." default="launch">
+    <property name="flex_home" value="/Applications/Adobe Flash Builder 4/sdks/4.1.0/bin/"/>
+    <property name="mxmlc" value="${flex_home}mxmlc"/>
+    <property name="adl" value="${flex_home}adl"/>
+    <property name="asdoc" value="${flex_home}asdoc"/>
+
+    <property name="entry" value="src/Lilly.as"/>
+    <property name="bin" value="bin/Lilly.swf"/>
+
+    <target name="launch" depends="compile">
+        <exec executable="open">
+            <arg line="${bin}"/>
+        </exec>
+    </target>
+    
+    <target name="compile">
+        <exec executable="${mxmlc}" failonerror="true">
+            <arg line="${entry}"/>
+            <arg line="-output ${bin}"/>
+            <arg line="-default-frame-rate=30"/>
+            <arg line="-use-network=true"/>
+            <arg line="-debug=true"/>
+            <arg line="-default-size 800 600"/>
+            <arg line="-static-link-runtime-shared-libraries"/>
+        </exec>
+    </target>
+</project>
